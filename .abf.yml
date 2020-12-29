@@ -1,2 +1,5 @@
-sources:
+removed_sources:
   pyp2rpm-3.3.3.tar.gz: 0e4ac4222b6c2ca8952cde9c5692fd17db3fb96b
+sources:
+  pyp2rpm-3.3.5.tar.gz: 1464dbef8be80a3180a6cbaf9e093fff736b6e27
+

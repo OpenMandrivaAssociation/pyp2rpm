@@ -1,7 +1,7 @@
 %global pypi_name pyp2rpm
 
 Name:           pyp2rpm
-Version:        3.3.3
+Version:        3.3.5
 Release:        1
 Group:          Development/Python
 Summary:        Convert Python packages to RPM SPECFILES
@@ -9,6 +9,7 @@ Summary:        Convert Python packages to RPM SPECFILES
 License:        MIT
 URL:            https://github.com/fedora-python/pyp2rpm
 Source0:        https://pypi.python.org/packages/89/83/efcc943c2aa19cb348433b08dcd7a055e58bb4db224d41769b2a33968949/pyp2rpm-%{version}.tar.gz
+Patch0:         add-openmandriva-spec-template.patch
 BuildArch:      noarch
  
 BuildRequires:  python-devel
@@ -32,6 +33,7 @@ is in line with Fedora Packaging Guidelines or Mageia Python Policy
 %setup -q -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
+%autopatch -p1
 
 %build
 %py3_build
