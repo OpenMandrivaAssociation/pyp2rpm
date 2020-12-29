@@ -42,7 +42,7 @@ rm -rf %{pypi_name}.egg-info
 %install
 %py3_install
 mkdir -p %{buildroot}%{_mandir}/man1/
-zstd -i pyp2rpm.1 -o %{buildroot}/%{_mandir}/man1/pyp2rpm.1
+zstd -i pyp2rpm.1 -o %{buildroot}/%{_mandir}/man1/pyp2rpm.1.zst
 
 %files
 %doc LICENSE
