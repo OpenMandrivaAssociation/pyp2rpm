@@ -37,16 +37,16 @@ rm -rf %{pypi_name}.egg-info
 
 %build
 %py3_build
-#%%{__python3} setup.py build
 
 
 %install
 %py3_install
-#%%{__python3} setup.py install --skip-build --root %{buildroot}
-
+mkdir -p %{buildroot}%{_mandir}/man1/
+zstd -i pyp2rpm.1 -o %{buildroot}/%{_mandir}/man1/pyp2rpm.1
 
 %files
 %doc LICENSE
+%{_mandir}/man1/pyp2rpm.1*
 %{_bindir}/pyp2rpm
 %{python3_sitelib}/%{pypi_name}
 %{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
