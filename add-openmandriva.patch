@@ -1,0 +1,56 @@
+diff --git a/pyp2rpm/convertor.py b/pyp2rpm/convertor.py
+index 7a01ad7..8a419b9 100644
+--- a/pyp2rpm/convertor.py
++++ b/pyp2rpm/convertor.py
+@@ -224,7 +224,8 @@ class Convertor(object):
+             name_convertor.NameConvertor.distro = self.distro
+             if self.autonc or (self.autonc is None and
+                 (self.distro == 'fedora' or
+-                 self.distro == 'mageia')):
++                 self.distro == 'mageia' or
++                 self.distro == 'openmandriva')):
+                 logger.debug("Using AutoProvidesNameConvertor to convert "
+                              "names of the packages.")
+                 self._name_convertor = name_convertor.AutoProvidesNameConvertor(
+diff --git a/pyp2rpm/name_convertor.py b/pyp2rpm/name_convertor.py
+index 0152bc9..9fa4407 100644
+--- a/pyp2rpm/name_convertor.py
++++ b/pyp2rpm/name_convertor.py
+@@ -106,6 +106,11 @@ class NameConvertor(object):
+         logger.debug('Rpmized name of {0}: {1}.'.format(name, rpmized_name))
+         return NameConvertor.rpm_versioned_name(rpmized_name, python_version)
+ 
++        if self.distro == 'openmandriva':
++            rpmized_name = rpmized_name.lower()
++        logger.debug('Rpmized name of {0}: {1}.'.format(name, rpmized_name))
++        return NameConvertor.rpm_versioned_name(rpmized_name, python_version)
++
+     def base_name(self, name):
+         """Removes any python prefixes of suffixes from name if present."""
+         base_name = name.replace('.', "-")
+diff --git a/pyp2rpm/settings.py b/pyp2rpm/settings.py
+index 5e5f5f2..935582b 100644
+--- a/pyp2rpm/settings.py
++++ b/pyp2rpm/settings.py
+@@ -1,17 +1,18 @@
+ from pyp2rpm import utils
+ 
+-DEFAULT_TEMPLATE = 'fedora'
++DEFAULT_TEMPLATE = 'openmandriva'
+ DEFAULT_PYTHON_VERSIONS = {
+     'fedora': ['3'],
+     'epel7': ['2', '3'],
+     'epel6': ['2'],
+     'mageia': ['3'],
+-    'pld': ['2', '3']
++    'pld': ['2', '3'],
++    'openmandriva': ['3']
+ }
+ DEFAULT_PYTHON_VERSION = DEFAULT_PYTHON_VERSIONS[DEFAULT_TEMPLATE][0]
+ DEFAULT_PKG_SOURCE = 'pypi'
+ DEFAULT_METADATA_SOURCE = 'pypi'
+-DEFAULT_DISTRO = 'fedora'
++DEFAULT_DISTRO = 'openmandriva'
+ DEFAULT_PKG_SAVE_PATH = utils.get_default_save_path()
+ KNOWN_DISTROS = DEFAULT_PYTHON_VERSIONS.keys()
+ ARCHIVE_SUFFIXES = ['.tar', '.tgz', '.tar.gz', '.tar.bz2',
