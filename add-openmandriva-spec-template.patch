@@ -30,11 +30,11 @@ index 0000000..9f84030
 +%description
 +{{ data.description|truncate(400)|wordwrap }}
 +{% for pv in data.sorted_python_versions %}
-+%package -n     {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(pv, True) }}
++%package -n     {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(None, True) }}
 +Summary:        %{summary}
-+%{?python_provide:%python_provide {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(pv, True)}}}
++%{?python_provide:%python_provide {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(None, True)}}}
 +{{ dependencies(data.runtime_deps, True, pv, pv) }}
-+%description -n {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(pv, True) }}
++%description -n {{data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(None, True) }}
 +{{ data.description|truncate(400)|wordwrap }}
 +{% endfor -%}
 +{%- if data.sphinx_dir %}
@@ -81,7 +81,7 @@ index 0000000..9f84030
 +{%- endfor %}
 +{%- endif %}
 +{% for pv in data.sorted_python_versions %}
-+%files -n {{ data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(pv, True) }}
++%files -n {{ data.pkg_name|macroed_pkg_name(data.srcname)|name_for_python_version(None, True) }}
 +{%- if data.doc_license %}
 +%license {{data.doc_license|join(' ')}}
 +{%- endif %}
