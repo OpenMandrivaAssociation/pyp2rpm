@@ -21,7 +21,7 @@ BuildRequires:	python3dist(pytest)
 BuildRequires:	python3dist(pip)
 BuildRequires:	python3dist(wheel)
 #BuildRequires:  python3dist(virtualenv-api)
-#BuildRequires:  python3dist(pytest-runner)
+BuildRequires:  python3dist(pytest-runner)
 #BuildRequires:  python3dist(scripttest)
 #BuildRequires:  vex
 
