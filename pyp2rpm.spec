@@ -14,10 +14,16 @@ BuildArch:	noarch
  
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	python3dist(setuptools)
+BuildRequires:  python3dist(click)
 BuildRequires:	python3dist(flexmock) >= 0.9.3
+BuildRequires:	python3dist(jinja2)
 BuildRequires:	python3dist(pytest)
 BuildRequires:	python3dist(pip)
 BuildRequires:	python3dist(wheel)
+#BuildRequires:  python3dist(virtualenv-api)
+#BuildRequires:  python3dist(pytest-runner)
+#BuildRequires:  python3dist(scripttest)
+#BuildRequires:  vex
 
 %description
 Convert Python packages to RPM SPECFILES. 
