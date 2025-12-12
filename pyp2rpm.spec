@@ -1,6 +1,6 @@
 Name:		pyp2rpm
 Version:	3.3.10
-Release:	1
+Release:	2
 Group:		Development/Python
 Summary:	Convert Python packages to RPM SPECFILES
 License:	MIT
